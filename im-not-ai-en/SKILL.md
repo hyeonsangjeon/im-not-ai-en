@@ -1,6 +1,6 @@
 ---
 name: im-not-ai-en
-description: Edit AI-assisted English so it reads naturally without losing the writer's meaning, voice, technical precision, or rhythm. Use for workplace messages, email snippets, issue and PR comments, technical explanations, documentation, posts, essays, and articles when the user asks to polish, naturalize, humanize, de-mechanize, or remove formulaic AI-style prose. Preserve facts, commitments, uncertainty, citations, links, numbers, code, terminology, register, and recognizable voice. Do not use for translation, invented personality, authorship deception, or AI-detector evasion.
+description: Copyedit AI-assisted English for natural, idiomatic grammar, usage, flow, and rhythm without losing the writer's meaning, voice, or technical precision. Use for workplace messages, email snippets, issue and PR comments, technical explanations, documentation, posts, essays, and articles when the user asks to polish, naturalize, humanize, fix awkward or non-native English, de-mechanize, or remove formulaic AI-style prose. Preserve facts, commitments, uncertainty, citations, links, numbers, code, terminology, register, and recognizable voice. Do not use for translation, invented personality, authorship deception, or AI-detector evasion.
 license: MIT
 ---
 
@@ -62,17 +62,34 @@ Work from structure to wording:
 
 Prefer subtraction and local repair over wholesale paraphrase. Do not swap synonyms merely to make the text look different. Keep technical prose technically exact.
 
+## Finish with a sentence-level copyedit
+
+After the larger edit, repair clear errors in grammar, usage, spelling, and punctuation. Check articles and determiners; countability, number, and agreement; tense, pronoun reference, and modifier attachment; prepositions and collocations; accidental repetition; apostrophes and sentence boundaries; and spelling or punctuation consistency.
+
+Classify each issue before changing it:
+
+- Correct an unambiguous error with the smallest local edit.
+- Preserve valid dialect, register, house-style, and pronunciation variants unless the user asks to normalize them. When several clear cues establish one English variety, repair isolated spellings from another variety instead of converting the document wholesale.
+- Keep deliberate fragments, repetition, contractions, and punctuation habits. Do not introduce or expand contractions merely to make a register seem more conversational, and do not exchange one valid form for an equivalent preferred form when that solves no observed inconsistency or other problem.
+- If a repair could change agency, scope, chronology, emphasis, or technical meaning, preserve the source and flag the ambiguity instead of guessing.
+
+Do not treat code, identifiers, URLs, commands, citations, or quoted data as ordinary prose. For anything beyond an obvious local fix, read [references/sentence-copyediting.md](references/sentence-copyediting.md).
+
+If the passage is already clear, grammatical, idiomatic, and appropriate to its setting, return it unchanged. A no-op is a successful edit.
+
 ## Validate the revision
 
 Compare the source and revision, then restore or revise any edit that fails these checks:
 
 1. Every fact, qualification, commitment, and logical relationship still means the same thing.
 2. Protected strings and technical terms remain exact unless the user explicitly asked to change them.
-3. No claim or recommendation is stronger, broader, more causal, or more certain; tentative suggestions remain equally tentative.
-4. The writer still sounds like the same person in the intended setting.
-5. Nothing new appears as fact, evidence, experience, emotion, or opinion.
-6. Paragraph and sentence changes follow the thought rather than a formula.
-7. The edit solves an observed problem; it is not change for its own sake.
+3. Sentence-level repairs are grammatical and idiomatic in context, not merely different.
+4. No claim or recommendation is stronger, broader, more causal, or more certain; tentative suggestions remain equally tentative.
+5. The writer still sounds like the same person in the intended setting.
+6. Nothing new appears as fact, evidence, experience, emotion, or opinion.
+7. No literal statement has acquired a new image, implication, or punchline.
+8. Paragraph and sentence changes follow the thought rather than a formula.
+9. The edit solves an observed problem; it is not change for its own sake.
 
 For a large revision, audit paragraph by paragraph. If the fidelity gate reports a protected-literal or structure failure, roll back the relevant edit and retry once. If fidelity and fluency conflict, preserve fidelity and flag the awkward or ambiguous passage.
 
@@ -81,6 +98,7 @@ For a large revision, audit paragraph by paragraph. If the fidelity gate reports
 Return the revised text first, without a diagnostic preamble. Preserve the source format unless the user requests a change.
 
 - For copy-ready text and most `concise` work, return only the revision.
+- If the source needs no correction or stylistic repair, return it verbatim.
 - Add short editorial notes only when the user asks for them or when an ambiguity, fidelity risk, or consequential choice needs attention.
 - If notes are useful, name at most three material changes. Do not provide an AI score or claim that the text is human-written or detector-proof.
 - When editing a file, preserve its syntax and format. Do not overwrite it unless the user requests an in-place edit.

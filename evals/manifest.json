@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "cases": [
     {
       "id": "concise-workplace",
@@ -73,6 +73,118 @@
         "cancel it"
       ],
       "output_contract": {"copy_ready": true}
+    },
+    {
+      "id": "concise-copyedit-workplace",
+      "source": "evals/fixtures/concise-copyedit-workplace.md",
+      "output": "evals/runs/v0.1.2/concise-copyedit-workplace.md",
+      "protected_spans": [
+        "migration",
+        "today’s review",
+        "three",
+        "about 20 minutes",
+        "Rowan",
+        "Monday",
+        "API",
+        "new cache key",
+        "Friday",
+        "cancel it"
+      ],
+      "output_contract": {
+        "copy_ready": true,
+        "must_repair_spans": [
+          "today’s review, I",
+          "an useful",
+          "three tester,",
+          "check take about",
+          "more informations",
+          "in Monday",
+          "said API",
+          "depends of"
+        ]
+      }
+    },
+    {
+      "id": "standard-copyedit-technical",
+      "source": "evals/fixtures/standard-copyedit-technical.md",
+      "output": "evals/runs/v0.1.2/standard-copyedit-technical.md",
+      "protected_spans": [
+        "parser",
+        "worker",
+        "scheduler",
+        "request ID",
+        "trace ID",
+        "`job_meta`",
+        "12",
+        "30-minute soak test",
+        "normalized record",
+        "timestamp",
+        "fallback path",
+        "800 ms",
+        "`retry_budget_ms`",
+        "`Retry-After`",
+        "does not replace"
+      ],
+      "output_contract": {
+        "copy_ready": true,
+        "must_repair_spans": [
+          "At a high level",
+          "parser allocate an",
+          "an worker",
+          "trace ID is copied",
+          "12 retry during",
+          "and it stores the timestamp",
+          "Using the fallback path",
+          "depends of"
+        ]
+      }
+    },
+    {
+      "id": "long-form-dialect-rhythm",
+      "source": "evals/fixtures/long-form-dialect-rhythm.md",
+      "output": "evals/runs/v0.1.2/long-form-dialect-rhythm.md",
+      "protected_spans": [
+        "grey notebook beside the kettle",
+        "morning handover",
+        "colour",
+        "ring the support desk",
+        "Last autumn",
+        "twenty minutes",
+        "“Leave the warning grey until the supplier confirms.”",
+        "supplier’s API",
+        "stale results",
+        "kettle had boiled twice",
+        "It does not make decisions better.",
+        "somewhere to start"
+      ],
+      "output_contract": {
+        "copy_ready": true,
+        "must_repair_spans": [
+          "the behavior of the retry button",
+          "At a high level",
+          "It provides visibility. It provides alignment. It provides continuity.",
+          "In conclusion",
+          "the center of a chat thread"
+        ]
+      }
+    },
+    {
+      "id": "concise-clean-voice",
+      "source": "evals/fixtures/concise-clean-voice.md",
+      "output": "evals/runs/v0.1.2/concise-clean-voice.md",
+      "protected_spans": [
+        "Small update",
+        "this morning",
+        "Nothing is stuck",
+        "six minutes old",
+        "normal for Monday",
+        "alert open until the batch finishes",
+        "No drama, just a slow start."
+      ],
+      "output_contract": {
+        "copy_ready": true,
+        "identity": true
+      }
     }
   ]
 }

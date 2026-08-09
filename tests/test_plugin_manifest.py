@@ -13,7 +13,7 @@ class PluginManifestTests(unittest.TestCase):
     def test_copilot_manifest_exposes_canonical_skill(self) -> None:
         manifest = json.loads((ROOT / "plugin.json").read_text(encoding="utf-8"))
         self.assertEqual(manifest["name"], "im-not-ai-en")
-        self.assertEqual(manifest["version"], "0.1.1")
+        self.assertEqual(manifest["version"], "0.1.2")
         self.assertEqual(manifest["license"], "MIT")
         self.assertEqual(
             manifest["homepage"],
@@ -27,6 +27,9 @@ class PluginManifestTests(unittest.TestCase):
         self.assertTrue((skill_root / "SKILL.md").is_file())
         self.assertTrue((skill_root / "agents" / "openai.yaml").is_file())
         self.assertTrue((skill_root / "references" / "editorial-guide.md").is_file())
+        self.assertTrue(
+            (skill_root / "references" / "sentence-copyediting.md").is_file()
+        )
         self.assertTrue((skill_root / "scripts" / "verify_fidelity.py").is_file())
 
     def test_skill_frontmatter_uses_portable_mit_metadata(self) -> None:
@@ -61,8 +64,8 @@ class PluginManifestTests(unittest.TestCase):
         self.assertLessEqual(len(short_description), 64)
         self.assertEqual(
             quoted_value("default_prompt"),
-            "Use $im-not-ai-en to edit this English while preserving my meaning, "
-            "voice, and natural rhythm.",
+            "Use $im-not-ai-en to make this English natural and idiomatic while "
+            "preserving my meaning and voice.",
         )
 
 

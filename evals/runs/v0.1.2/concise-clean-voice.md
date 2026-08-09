@@ -1,0 +1,1 @@
+Small update: I checked the queue this morning. Nothing is stuck; the oldest job is six minutes old, which is normal for Monday. I’ll leave the alert open until the batch finishes. No drama, just a slow start.
