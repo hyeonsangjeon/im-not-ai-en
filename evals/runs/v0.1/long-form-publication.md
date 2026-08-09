@@ -1,0 +1,15 @@
+Every team has a drawer full of tiny decisions. They matter all the more as tools evolve quickly and collaboration becomes more distributed. We decide whether a timestamp means creation or receipt, whether “archive” hides a record or freezes it, and whether a retry button repeats the last step or starts the whole job again. Each choice looks small. Together, they become the shape of the product.
+
+The interesting thing is that these decisions rarely arrive wearing decision-shaped hats. They turn up as a question in chat, a comment at the bottom of a pull request, or a sentence someone adds to a ticket before lunch. Because they seem informal, we answer them informally. “Use local time for now.” “Archive is basically delete, but safer.” “Retry the whole thing.” Six months later, those scraps are doing policy work.
+
+When the reasoning disappears, the gap is not only in the documentation but in the team’s memory. The next person sees only the behavior. They can preserve it without understanding it or change it without seeing who relied on it. Either way, a small missing explanation becomes a coordination problem, and eventually a trust problem.
+
+I started keeping a decision log after we spent a rainy Tuesday arguing about a grey button. The button was not the real disagreement. One person thought “disabled” meant temporarily unavailable; another thought it meant the feature did not apply. The earlier discussion had happened in a video call and vanished with it. We reconstructed the choice from a screenshot, two half-remembered sentences, and the fact that nobody wanted to schedule another meeting. Glamorous work, this was not.
+
+My log is deliberately plain: date, decision, reason, owner, and a link to the place where the change landed. If we considered an alternative, I add one line about why we did not choose it. That is all. It is not meant to be an exhaustive repository of organizational knowledge. It only has to leave enough thread for someone else to pull.
+
+A decision log can also become theatre. A template grows fields because fields are easy to add. Soon every choice asks for impact scores, stakeholder matrices, and a paragraph on strategic alignment. People stop writing entries, or they write fog. A blank field at least tells the truth.
+
+The useful test is simple: could a person who was not in the room explain why the choice made sense at the time? Not whether it was perfect. Not whether we would make it again. At the time. That last phrase matters because decisions age in context: the customer was waiting, the API had a limit, the team had three days, the supposedly temporary workaround was the only bridge that reached the other bank.
+
+Lightweight decision logging gives teams more clarity without requiring much ceremony. It need not record everything, only what a future teammate will need to make sense of the choice. The best decision log is not the longest one. It is the one that saves someone from holding an archaeological dig in chat history.

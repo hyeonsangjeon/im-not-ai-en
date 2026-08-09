@@ -1,0 +1,13 @@
+{
+  "name": "im-not-ai-en",
+  "version": "0.1.1",
+  "description": "Edit AI-assisted English without losing meaning, voice, or technical precision.",
+  "author": {
+    "name": "hyeonsangjeon"
+  },
+  "homepage": "https://github.com/hyeonsangjeon/im-not-ai-en",
+  "repository": "https://github.com/hyeonsangjeon/im-not-ai-en",
+  "license": "MIT",
+  "keywords": ["english", "editing", "prose", "voice", "fidelity"],
+  "skills": ["./im-not-ai-en/"]
+}

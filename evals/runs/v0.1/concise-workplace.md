@@ -1,0 +1,1 @@
+Quick heads-up: the staging login callback is returning a 502 for EU users, which blocks meaningful validation. Could we move the 15:00 UTC demo? I’m checking `AUTH_REDIRECT_URI` now. My hunch—still only a hunch—is that yesterday’s proxy change dropped the forwarded host. I’d rather reschedule than have everyone spend twenty minutes staring at a spinner.
