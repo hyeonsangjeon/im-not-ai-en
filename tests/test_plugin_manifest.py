@@ -7,33 +7,72 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+CANONICAL_SKILL_ROOT = ROOT / "im-not-ai-en"
+COPILOT_SKILL_ROOT = ROOT / ".claude" / "skills" / "im-not-ai-en"
 
 
 class PluginManifestTests(unittest.TestCase):
     def test_copilot_manifest_exposes_canonical_skill(self) -> None:
-        manifest = json.loads((ROOT / "plugin.json").read_text(encoding="utf-8"))
+        manifest_path = ROOT / ".claude-plugin" / "plugin.json"
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         self.assertEqual(manifest["name"], "im-not-ai-en")
-        self.assertEqual(manifest["version"], "0.1.2")
+        self.assertEqual(manifest["version"], "0.1.3")
         self.assertEqual(manifest["license"], "MIT")
         self.assertEqual(
             manifest["homepage"],
             "https://github.com/hyeonsangjeon/im-not-ai-en",
         )
         self.assertEqual(manifest["repository"], manifest["homepage"])
-        self.assertEqual(manifest["skills"], ["./im-not-ai-en/"])
+        self.assertEqual(manifest["skills"], ["./.claude/skills/"])
 
-        skill_root = ROOT / "im-not-ai-en"
-        self.assertEqual((ROOT / manifest["skills"][0]).resolve(), skill_root.resolve())
-        self.assertTrue((skill_root / "SKILL.md").is_file())
-        self.assertTrue((skill_root / "agents" / "openai.yaml").is_file())
-        self.assertTrue((skill_root / "references" / "editorial-guide.md").is_file())
+        skill_container = ROOT / manifest["skills"][0]
+        self.assertEqual(skill_container.resolve(), COPILOT_SKILL_ROOT.parent.resolve())
+        self.assertTrue((COPILOT_SKILL_ROOT / "SKILL.md").is_file())
+        self.assertTrue((COPILOT_SKILL_ROOT / "agents" / "openai.yaml").is_file())
         self.assertTrue(
-            (skill_root / "references" / "sentence-copyediting.md").is_file()
+            (COPILOT_SKILL_ROOT / "references" / "editorial-guide.md").is_file()
         )
-        self.assertTrue((skill_root / "scripts" / "verify_fidelity.py").is_file())
+        self.assertTrue(
+            (
+                COPILOT_SKILL_ROOT
+                / "references"
+                / "sentence-copyediting.md"
+            ).is_file()
+        )
+        self.assertTrue(
+            (COPILOT_SKILL_ROOT / "scripts" / "verify_fidelity.py").is_file()
+        )
+        for higher_priority_manifest in (
+            ROOT / ".plugin" / "plugin.json",
+            ROOT / "plugin.json",
+            ROOT / ".github" / "plugin" / "plugin.json",
+        ):
+            with self.subTest(manifest=higher_priority_manifest.relative_to(ROOT)):
+                self.assertFalse(higher_priority_manifest.exists())
+
+    def test_copilot_skill_mirror_matches_canonical_tree(self) -> None:
+        def files_under(root: Path) -> list[Path]:
+            return sorted(
+                path.relative_to(root)
+                for path in root.rglob("*")
+                if path.is_file()
+                and "__pycache__" not in path.parts
+                and path.suffix not in {".pyc", ".pyo"}
+            )
+
+        canonical_files = files_under(CANONICAL_SKILL_ROOT)
+        copilot_files = files_under(COPILOT_SKILL_ROOT)
+        self.assertEqual(copilot_files, canonical_files)
+
+        for relative_path in canonical_files:
+            with self.subTest(path=relative_path.as_posix()):
+                self.assertEqual(
+                    (COPILOT_SKILL_ROOT / relative_path).read_bytes(),
+                    (CANONICAL_SKILL_ROOT / relative_path).read_bytes(),
+                )
 
     def test_skill_frontmatter_uses_portable_mit_metadata(self) -> None:
-        skill = (ROOT / "im-not-ai-en" / "SKILL.md").read_text(encoding="utf-8")
+        skill = (CANONICAL_SKILL_ROOT / "SKILL.md").read_text(encoding="utf-8")
         match = re.match(r"\A---\n(.*?)\n---\n", skill, flags=re.DOTALL)
         self.assertIsNotNone(match)
         frontmatter = match.group(1)
@@ -41,7 +80,7 @@ class PluginManifestTests(unittest.TestCase):
         self.assertRegex(frontmatter, r"(?m)^license: MIT$")
 
     def test_skill_bundles_the_full_mit_license(self) -> None:
-        bundled = (ROOT / "im-not-ai-en" / "LICENSE").read_text(encoding="utf-8")
+        bundled = (CANONICAL_SKILL_ROOT / "LICENSE").read_text(encoding="utf-8")
         project = (ROOT / "LICENSE").read_text(encoding="utf-8")
         self.assertEqual(bundled, project)
         self.assertTrue(bundled.startswith("MIT License\n\n"))
@@ -49,7 +88,7 @@ class PluginManifestTests(unittest.TestCase):
         self.assertIn('THE SOFTWARE IS PROVIDED "AS IS"', bundled)
 
     def test_openai_interface_uses_canonical_identity(self) -> None:
-        metadata = (ROOT / "im-not-ai-en" / "agents" / "openai.yaml").read_text(
+        metadata = (CANONICAL_SKILL_ROOT / "agents" / "openai.yaml").read_text(
             encoding="utf-8"
         )
 

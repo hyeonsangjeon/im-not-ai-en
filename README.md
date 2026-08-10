@@ -41,23 +41,25 @@ For a manual installation, copy or link the canonical [`im-not-ai-en/`](im-not-a
 
 | Host | Project location | Personal location |
 | --- | --- | --- |
-| OpenAI Codex | `.agents/skills/im-not-ai-en` | `~/.agents/skills/im-not-ai-en` |
-| GitHub Copilot | `.agents/skills/im-not-ai-en` | `~/.agents/skills/im-not-ai-en` |
+| OpenAI Codex | `.agents/skills/im-not-ai-en` | `~/.codex/skills/im-not-ai-en` |
+| GitHub Copilot | `.github/skills/im-not-ai-en` | `~/.copilot/skills/im-not-ai-en` |
 | Claude Code | `.claude/skills/im-not-ai-en` | `~/.claude/skills/im-not-ai-en` |
 
 The shared core follows the [Agent Skills specification](https://agentskills.io/specification). `agents/openai.yaml` is a thin OpenAI metadata sidecar; the editorial instructions do not depend on it. See the official host documentation for [Codex skills](https://learn.chatgpt.com/docs/build-skills), [GitHub Copilot agent skills](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills), and [Claude Code skills](https://code.claude.com/docs/en/skills).
 
 No global installation is performed by this repository.
 
-### Deprecated Copilot plugin compatibility
+### Copilot plugin compatibility
 
-The root [`plugin.json`](plugin.json) also supports the older direct-repository Copilot plugin route:
+A byte-identical mirror under [`.claude/skills/im-not-ai-en/`](.claude/skills/im-not-ai-en) and its [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) manifest support Copilot runtimes that discover plugin skills through the Claude-compatible layout. A regression test prevents the mirror from drifting from the canonical [`im-not-ai-en/`](im-not-ai-en) skill.
+
+The adapter also supports the older direct-repository Copilot plugin route:
 
 ```bash
-copilot plugins install hyeonsangjeon/im-not-ai-en
+copilot plugin install hyeonsangjeon/im-not-ai-en
 ```
 
-Copilot CLI warns that direct plugin installs from repositories are deprecated. Treat this as compatibility for existing workflows, not the primary install path or a promise of future marketplace availability.
+Copilot CLI warns that direct plugin installs from repositories are deprecated. Treat this as compatibility for existing workflows, not the primary install path or a promise of future marketplace availability. If a running session predates the install, use `/skills reload` or restart the Copilot/ACP process. The `gh skill install` command above remains the preferred path because it installs the complete skill as a host-native personal or project skill.
 
 ## Use
 
@@ -81,6 +83,9 @@ The revised text comes first. Copy-ready and most concise requests return only t
 im-not-ai-en/
 ├── README.md
 ├── ACKNOWLEDGMENTS.md
+├── .claude-plugin/
+│   └── plugin.json
+├── .claude/skills/im-not-ai-en/  # byte-identical Copilot compatibility mirror
 ├── im-not-ai-en/
 │   ├── SKILL.md
 │   ├── agents/openai.yaml
@@ -88,12 +93,11 @@ im-not-ai-en/
 │   │   ├── editorial-guide.md
 │   │   └── sentence-copyediting.md
 │   └── scripts/verify_fidelity.py
-├── plugin.json
 ├── evals/
 └── tests/
 ```
 
-The installable skill stays lean. Evaluation fixtures and forward-test evidence live outside it.
+The canonical installable skill stays lean. Evaluation fixtures and forward-test evidence live outside it, while tests keep the Copilot compatibility mirror byte-identical to the canonical skill.
 
 ## Evaluation
 
