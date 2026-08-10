@@ -2,7 +2,7 @@
 
 - Package version under review: `0.1.2`
 - Forward tests and grading recorded: 2026-08-10
-- Version status: `v0.1.2` names the package state represented by the current manifest; it does not assert that a Git tag or hosted release exists
+- Version status: `v0.1.2` names the package manifest state evaluated on 2026-08-10; it does not assert that a Git tag or hosted release exists
 
 All fixture contents are synthetic. The people, systems, schedules, metrics, identifiers, events, and anecdotes were written for this repository and were not copied, adapted, or derived from an employer, customer, internal system, production incident, or production data.
 

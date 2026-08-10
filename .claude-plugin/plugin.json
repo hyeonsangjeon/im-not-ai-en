@@ -1,6 +1,6 @@
 {
   "name": "im-not-ai-en",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Copyedit AI-assisted English without losing meaning, voice, or technical precision.",
   "author": {
     "name": "hyeonsangjeon"
@@ -9,5 +9,5 @@
   "repository": "https://github.com/hyeonsangjeon/im-not-ai-en",
   "license": "MIT",
   "keywords": ["english", "copyediting", "grammar", "prose", "voice", "fidelity"],
-  "skills": ["./im-not-ai-en/"]
+  "skills": ["./.claude/skills/"]
 }

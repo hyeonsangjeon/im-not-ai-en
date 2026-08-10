@@ -1,0 +1,4 @@
+interface:
+  display_name: "I'm Not AI — English"
+  short_description: "Make English natural without losing the writer's voice"
+  default_prompt: "Use $im-not-ai-en to make this English natural and idiomatic while preserving my meaning and voice."
