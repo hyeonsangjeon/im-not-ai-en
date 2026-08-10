@@ -2,8 +2,6 @@
 
 I'm Not AI — English is a portable agent skill for editing AI-assisted English without losing the writer's meaning, voice, technical precision, or natural rhythm. It is meant for the ordinary places where assisted writing needs a careful editorial pass: a quick message, a technical explanation, or an article that needs better movement between ideas.
 
-This is an independent English adaptation inspired by [`epoko77-ai/im-not-ai`](https://github.com/epoko77-ai/im-not-ai) and the maintainer's Korean fork, [`hyeonsangjeon/im-not-ai`](https://github.com/hyeonsangjeon/im-not-ai). It retains language-neutral ideas such as conservative editing, protected meaning, progressive disclosure, and regression checks. The English-language instructions, fixtures, and verifier were written for this repository rather than translated from the Korean rules. Its sentence-level copyediting design was also informed by the public projects listed in [Acknowledgments](ACKNOWLEDGMENTS.md).
-
 The goal is not to make prose perform “humanness.” It is to help the original writer sound more like themselves on a clear day.
 
 Alongside structural and voice editing, the skill asks the host agent to inspect common sentence-level issues such as article choice, countability and agreement, idiomatic prepositions and collocations, pronoun reference, modifier placement, contractions, punctuation, and dialect consistency. These are contextual editing instructions, not an exhaustive grammar engine or a guarantee that every error will be detected.
@@ -127,3 +125,10 @@ These checks test editorial behavior. The verifier checks only the listed determ
 ## License
 
 I'm Not AI — English is available under the [MIT License](LICENSE). The license retains attribution to `epoko77-ai` and `hyeonsangjeon`. [Acknowledgments](ACKNOWLEDGMENTS.md) records conceptual design references that are not bundled dependencies.
+
+## References
+
+The English instructions, fixtures, and verifier were written specifically for this repository. Project lineage and design research are documented here:
+
+- `[1]`. [`epoko77-ai/im-not-ai`](https://github.com/epoko77-ai/im-not-ai) and the maintainer's [Korean-language fork](https://github.com/hyeonsangjeon/im-not-ai) — language-neutral ideas considered during early design, including conservative editing, protected meaning, progressive disclosure, and regression checks.
+- `[2]`. [Acknowledgments](ACKNOWLEDGMENTS.md) — public MIT-licensed projects consulted for sentence-level copyediting design.
