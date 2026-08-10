@@ -33,11 +33,7 @@ class PluginManifestTests(unittest.TestCase):
             (COPILOT_SKILL_ROOT / "references" / "editorial-guide.md").is_file()
         )
         self.assertTrue(
-            (
-                COPILOT_SKILL_ROOT
-                / "references"
-                / "sentence-copyediting.md"
-            ).is_file()
+            (COPILOT_SKILL_ROOT / "references" / "sentence-copyediting.md").is_file()
         )
         self.assertTrue(
             (COPILOT_SKILL_ROOT / "scripts" / "verify_fidelity.py").is_file()
@@ -46,6 +42,27 @@ class PluginManifestTests(unittest.TestCase):
             ROOT / ".plugin" / "plugin.json",
             ROOT / "plugin.json",
             ROOT / ".github" / "plugin" / "plugin.json",
+        ):
+            with self.subTest(manifest=higher_priority_manifest.relative_to(ROOT)):
+                self.assertFalse(higher_priority_manifest.exists())
+
+    def test_copilot_marketplace_exposes_compatibility_plugin(self) -> None:
+        marketplace_path = ROOT / ".claude-plugin" / "marketplace.json"
+        marketplace = json.loads(marketplace_path.read_text(encoding="utf-8"))
+        self.assertEqual(marketplace["name"], "im-not-ai-en")
+        self.assertEqual(marketplace["owner"]["name"], "hyeonsangjeon")
+        self.assertEqual(marketplace["metadata"]["version"], "0.1.3")
+        self.assertEqual(marketplace["metadata"]["pluginRoot"], ".")
+        self.assertEqual(len(marketplace["plugins"]), 1)
+        plugin = marketplace["plugins"][0]
+        self.assertEqual(plugin["name"], "im-not-ai-en")
+        self.assertEqual(plugin["version"], "0.1.3")
+        self.assertEqual(plugin["source"], "./")
+
+        for higher_priority_manifest in (
+            ROOT / "marketplace.json",
+            ROOT / ".plugin" / "marketplace.json",
+            ROOT / ".github" / "plugin" / "marketplace.json",
         ):
             with self.subTest(manifest=higher_priority_manifest.relative_to(ROOT)):
                 self.assertFalse(higher_priority_manifest.exists())
@@ -70,6 +87,11 @@ class PluginManifestTests(unittest.TestCase):
                     (COPILOT_SKILL_ROOT / relative_path).read_bytes(),
                     (CANONICAL_SKILL_ROOT / relative_path).read_bytes(),
                 )
+
+    def test_copilot_acp_smoke_is_valid_python(self) -> None:
+        smoke_path = ROOT / "tests" / "copilot_acp_smoke.py"
+        source = smoke_path.read_text(encoding="utf-8")
+        compile(source, str(smoke_path), "exec")
 
     def test_skill_frontmatter_uses_portable_mit_metadata(self) -> None:
         skill = (CANONICAL_SKILL_ROOT / "SKILL.md").read_text(encoding="utf-8")

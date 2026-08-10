@@ -53,13 +53,27 @@ No global installation is performed by this repository.
 
 A byte-identical mirror under [`.claude/skills/im-not-ai-en/`](.claude/skills/im-not-ai-en) and its [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) manifest support Copilot runtimes that discover plugin skills through the Claude-compatible layout. A regression test prevents the mirror from drifting from the canonical [`im-not-ai-en/`](im-not-ai-en) skill.
 
-The adapter also supports the older direct-repository Copilot plugin route:
+For a Copilot plugin install, register the repository's [marketplace manifest](.claude-plugin/marketplace.json), then install the plugin from it:
+
+```bash
+copilot plugin marketplace add hyeonsangjeon/im-not-ai-en
+copilot plugin install im-not-ai-en@im-not-ai-en
+```
+
+The adapter also supports the older direct-repository route:
 
 ```bash
 copilot plugin install hyeonsangjeon/im-not-ai-en
 ```
 
-Copilot CLI warns that direct plugin installs from repositories are deprecated. Treat this as compatibility for existing workflows, not the primary install path or a promise of future marketplace availability. If a running session predates the install, use `/skills reload` or restart the Copilot/ACP process. The `gh skill install` command above remains the preferred path because it installs the complete skill as a host-native personal or project skill.
+Copilot CLI warns that direct plugin installs from repositories are deprecated. Treat that command as compatibility for existing workflows; use the marketplace commands for plugin-managed installation or `gh skill install` for a host-native personal or project skill. If a running session predates the install, use `/skills reload` or restart the Copilot/ACP process.
+
+Maintainers can run the opt-in live regression after publishing a revision. It installs into a temporary Copilot home, confirms the plugin registry path, and then starts a fresh ACP stdio session and requires `im-not-ai-en` in the authoritative `available_commands_update` notification:
+
+```bash
+python3 tests/copilot_acp_smoke.py --install-mode direct --require-direct-deprecation-warning
+python3 tests/copilot_acp_smoke.py --install-mode marketplace
+```
 
 ## Use
 
@@ -84,7 +98,8 @@ im-not-ai-en/
 ├── README.md
 ├── ACKNOWLEDGMENTS.md
 ├── .claude-plugin/
-│   └── plugin.json
+│   ├── plugin.json
+│   └── marketplace.json
 ├── .claude/skills/im-not-ai-en/  # byte-identical Copilot compatibility mirror
 ├── im-not-ai-en/
 │   ├── SKILL.md
