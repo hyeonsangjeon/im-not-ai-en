@@ -2,9 +2,11 @@
 
 I'm Not AI — English is a portable agent skill for editing AI-assisted English without losing the writer's meaning, voice, technical precision, or natural rhythm. It is meant for the ordinary places where assisted writing needs a careful editorial pass: a quick message, a technical explanation, or an article that needs better movement between ideas.
 
-This is an independent English adaptation inspired by [`epoko77-ai/im-not-ai`](https://github.com/epoko77-ai/im-not-ai) and the maintainer's Korean fork, [`hyeonsangjeon/im-not-ai`](https://github.com/hyeonsangjeon/im-not-ai). It retains language-neutral ideas such as conservative editing, protected meaning, progressive disclosure, and regression checks. Its English editorial rules, fixtures, and verifier behavior were developed independently rather than translated from the Korean rules.
+This is an independent English adaptation inspired by [`epoko77-ai/im-not-ai`](https://github.com/epoko77-ai/im-not-ai) and the maintainer's Korean fork, [`hyeonsangjeon/im-not-ai`](https://github.com/hyeonsangjeon/im-not-ai). It retains language-neutral ideas such as conservative editing, protected meaning, progressive disclosure, and regression checks. The English-language instructions, fixtures, and verifier were written for this repository rather than translated from the Korean rules. Its sentence-level copyediting design was also informed by the public projects listed in [Acknowledgments](ACKNOWLEDGMENTS.md).
 
 The goal is not to make prose perform “humanness.” It is to help the original writer sound more like themselves on a clear day.
+
+Alongside structural and voice editing, the skill asks the host agent to inspect common sentence-level issues such as article choice, countability and agreement, idiomatic prepositions and collocations, pronoun reference, modifier placement, contractions, punctuation, and dialect consistency. These are contextual editing instructions, not an exhaustive grammar engine or a guarantee that every error will be detected.
 
 ## What it protects
 
@@ -78,10 +80,13 @@ The revised text comes first. Copy-ready and most concise requests return only t
 ```text
 im-not-ai-en/
 ├── README.md
+├── ACKNOWLEDGMENTS.md
 ├── im-not-ai-en/
 │   ├── SKILL.md
 │   ├── agents/openai.yaml
-│   ├── references/editorial-guide.md
+│   ├── references/
+│   │   ├── editorial-guide.md
+│   │   └── sentence-copyediting.md
 │   └── scripts/verify_fidelity.py
 ├── plugin.json
 ├── evals/
@@ -92,14 +97,14 @@ The installable skill stays lean. Evaluation fixtures and forward-test evidence 
 
 ## Evaluation
 
-The evaluation suite covers short workplace prose, medium technical explanations, a long-form publication excerpt, and quoted instruction-like data. All fixture contents—including every name, endpoint, vendor, date, metric, incident, and anecdote—are synthetic. They were written for this repository and are not copied, adapted, or derived from any employer, customer, internal system, production incident, or production data.
+The evaluation suite covers short workplace prose, medium technical explanations, long-form publication excerpts, quoted instruction-like data, focused sentence-level copyediting, mixed-dialect repair, and an already natural no-op case. All fixture contents—including every name, endpoint, vendor, date, metric, incident, and anecdote—are synthetic. They were written for this repository and are not copied, adapted, or derived from any employer, customer, internal system, production incident, or production data.
 
-See the [evaluation protocol](evals/README.md) and [v0.1.1 evaluation notes](evals/results-v0.1.1.md). The recorded `10/10` scores are exploratory, self-reported subjective assessments; the notes identify the artifacts that were not preserved and therefore cannot be independently reproduced.
+See the [evaluation protocol](evals/README.md), the [v0.1.2 copyediting evaluation notes](evals/results-v0.1.2.md), and the historical [v0.1.1 notes](evals/results-v0.1.1.md). Recorded grader scores are exploratory observations from fresh agents, not independent benchmark results; the notes identify the preserved artifacts and reproducibility limits.
 
 `im-not-ai-en/scripts/verify_fidelity.py` adds deterministic checks for supported literals, declared protected spans, common Markdown structure, and copy-ready wrappers. Its output redacts protected values by default; use `--show-values` only when reviewing trusted, non-sensitive text. The verifier is tested on Python 3.11 and 3.12. The machine-readable [`evals/manifest.json`](evals/manifest.json) binds fixtures to their outputs and contracts. Change rate is reported, but no universal pass threshold is imposed.
 
-These checks test editorial behavior. They do not prove semantic equivalence, classify authorship, or measure detector scores.
+These checks test editorial behavior. The verifier checks only the listed deterministic invariants; it does not evaluate grammar, naturalness, voice, or semantic equivalence, classify authorship, or measure detector scores.
 
 ## License
 
-I'm Not AI — English is available under the [MIT License](LICENSE). The license retains attribution to `epoko77-ai` and `hyeonsangjeon`.
+I'm Not AI — English is available under the [MIT License](LICENSE). The license retains attribution to `epoko77-ai` and `hyeonsangjeon`. [Acknowledgments](ACKNOWLEDGMENTS.md) records conceptual design references that are not bundled dependencies.

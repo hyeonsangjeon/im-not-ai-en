@@ -8,7 +8,7 @@ Focus on patterns that repeat, cluster, obscure the point, or clash with the sou
 
 ### Empty framing and redundant guidance
 
-- Generic scene-setting delays the actual subject.
+- Generic scene-setting delays the actual subject. Phrases such as “At a high level” are empty when no change in level or scope follows.
 - Section previews, recaps, and conclusion announcements repeat information the structure already makes clear.
 - Transitions label obvious relationships instead of expressing them.
 - Sentences such as “This highlights” or “It is important to note” add no meaning.
@@ -72,6 +72,7 @@ Optimize for sustained attention without imposing a house voice.
 - Build transitions from the relationship between ideas: cause, contrast, sequence, evidence, limit, or consequence.
 - Let paragraph length follow the development of thought. Use short paragraphs sparingly when the source earns the emphasis.
 - Remove repeated thesis statements and manufactured endings. End sections on the strongest existing implication, image, limit, or unresolved question.
+- Join existing ideas directly after removing scaffolding. Do not replace it with a new bridge, aside, joke, image, interpretation, or narrative claim.
 - Audit distant dependencies after restructuring: callbacks, pronouns, chronology, terms, citations, and the eventual conclusion.
 
 ## Honor register cues

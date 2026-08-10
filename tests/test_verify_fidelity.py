@@ -249,6 +249,22 @@ class VerifyFidelityTests(unittest.TestCase):
             {},
         )
 
+    def test_sentence_copyediting_categories_require_manual_review(self) -> None:
+        result = MODULE.verify("A clean sentence.", "A clean sentence.")
+        required = result["manual_review"]["required"]
+        self.assertIn(
+            "articles, determiners, countability, number, and agreement",
+            required,
+        )
+        self.assertIn(
+            "pronoun reference, modifier attachment, and sentence boundaries",
+            required,
+        )
+        self.assertIn(
+            "prepositions, collocations, contractions, punctuation, and dialect",
+            required,
+        )
+
     def test_sensitive_diagnostic_values_are_redacted_by_default(self) -> None:
         source = (
             "Contact owner-secret@example.test at https://private.example.test/alpha.\n"
