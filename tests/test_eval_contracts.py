@@ -70,7 +70,9 @@ def immutable_spans(path: Path) -> list[str]:
 class EvalContractTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls.manifest = json.loads((ROOT / "evals" / "manifest.json").read_text(encoding="utf-8"))
+        cls.manifest = json.loads(
+            (ROOT / "evals" / "manifest.json").read_text(encoding="utf-8")
+        )
 
     def test_manifest_is_complete_and_unique(self) -> None:
         self.assertEqual(self.manifest["version"], 2)
@@ -87,6 +89,8 @@ class EvalContractTests(unittest.TestCase):
                 "standard-copyedit-technical",
                 "long-form-dialect-rhythm",
                 "concise-clean-voice",
+                "concise-symbol-light-workplace",
+                "concise-functional-punctuation",
             },
         )
         sources = [case["source"] for case in self.manifest["cases"]]
@@ -140,7 +144,10 @@ class EvalContractTests(unittest.TestCase):
             for case in self.manifest["cases"]
             if case["output_contract"].get("identity") is True
         ]
-        self.assertEqual([case["id"] for case in identity_cases], ["concise-clean-voice"])
+        self.assertEqual(
+            [case["id"] for case in identity_cases],
+            ["concise-clean-voice", "concise-functional-punctuation"],
+        )
         for case in identity_cases:
             source = source_block(ROOT / case["source"])
             output = (ROOT / case["output"]).read_text(encoding="utf-8")

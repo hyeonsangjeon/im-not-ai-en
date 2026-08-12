@@ -1,6 +1,6 @@
 # I'm Not AI — English evaluations
 
-These fixtures exercise the three editing profiles on short workplace prose, technical explanations, long-form publication excerpts, a mixed technical/workplace case with quoted instruction-like data, focused sentence-level copyediting, dialect consistency, and an already clean no-op case. They test editorial behavior, not authorship classification or AI-detector performance.
+These fixtures exercise the three editing profiles on short workplace prose, technical explanations, long-form publication excerpts, a mixed technical/workplace case with quoted instruction-like data, focused sentence-level copyediting, dialect consistency, symbol-light prose, functional punctuation, and already clean no-op cases. They test editorial behavior, not authorship classification or AI-detector performance.
 
 All fixture contents—including every name, endpoint, vendor, date, metric, incident, and anecdote—are synthetic. They were written for this repository and are not copied, adapted, or derived from any employer, customer, internal system, production incident, or production data.
 
@@ -54,6 +54,6 @@ These hard checks cover the contracts represented in the manifest, including tar
 
 ## Scope of the evidence
 
-Passing the deterministic contracts establishes that the recorded revisions preserve the literals, protected spans, structures, and wrappers represented by these eight fixtures. It also establishes the narrow targeted-string and identity assertions described above. The cases use different source texts and genres, so they do not isolate the effect of profile selection.
+Passing the deterministic contracts establishes that the recorded revisions preserve the literals, protected spans, structures, and wrappers represented by these ten fixtures. It also establishes the narrow targeted-string and identity assertions described above. The cases use different source texts and genres, so they do not isolate the effect of profile selection.
 
-The evidence does not establish universal fidelity, comprehensive grammar correction, coverage of every English register, authorship, or detector behavior. See the [v0.1.2 evaluation notes](results-v0.1.2.md) for the new copyediting runs and the [v0.1.1 notes](results-v0.1.1.md) for the historical structural-editing runs. Version labels refer to package states under review; they do not assert that Git tags or hosted releases exist.
+The evidence does not establish universal fidelity, comprehensive grammar correction, coverage of every English register, authorship, or detector behavior. See the [v0.1.4 evaluation notes](results-v0.1.4.md) for the symbol-light prose run, the [v0.1.2 notes](results-v0.1.2.md) for copyediting runs, and the [v0.1.1 notes](results-v0.1.1.md) for historical structural-editing runs. Version labels refer to package states under review; they do not assert that Git tags or hosted releases exist.

@@ -16,7 +16,7 @@ class PluginManifestTests(unittest.TestCase):
         manifest_path = ROOT / ".claude-plugin" / "plugin.json"
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         self.assertEqual(manifest["name"], "im-not-ai-en")
-        self.assertEqual(manifest["version"], "0.1.3")
+        self.assertEqual(manifest["version"], "0.1.4")
         self.assertEqual(manifest["license"], "MIT")
         self.assertEqual(
             manifest["homepage"],
@@ -51,12 +51,12 @@ class PluginManifestTests(unittest.TestCase):
         marketplace = json.loads(marketplace_path.read_text(encoding="utf-8"))
         self.assertEqual(marketplace["name"], "im-not-ai-en")
         self.assertEqual(marketplace["owner"]["name"], "hyeonsangjeon")
-        self.assertEqual(marketplace["metadata"]["version"], "0.1.3")
+        self.assertEqual(marketplace["metadata"]["version"], "0.1.4")
         self.assertEqual(marketplace["metadata"]["pluginRoot"], ".")
         self.assertEqual(len(marketplace["plugins"]), 1)
         plugin = marketplace["plugins"][0]
         self.assertEqual(plugin["name"], "im-not-ai-en")
-        self.assertEqual(plugin["version"], "0.1.3")
+        self.assertEqual(plugin["version"], "0.1.4")
         self.assertEqual(plugin["source"], "./")
 
         for higher_priority_manifest in (
