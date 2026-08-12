@@ -54,11 +54,12 @@ Work from structure to wording:
 
 1. Remove empty framing and repeated explanation.
 2. Make the information hierarchy visible: lead with the actual point, evidence, request, or consequence.
-3. Break repeated rhetorical frames only where they feel mechanical. Keep useful contrasts, parallelism, headings, bullets, and dashes.
+3. Break repeated rhetorical frames only where they feel mechanical. Keep useful contrasts, parallelism, headings, bullets, and punctuation that has a clear function.
 4. Prefer concrete subjects and direct verbs when the source establishes the actor. Keep passive voice or nominalized terms when they carry technical or disciplinary meaning.
 5. Replace vague intensifiers or praise with stated properties already present in the source; otherwise delete them.
 6. Vary cadence only at genuine thought boundaries. Split or combine sentences because the logic calls for it, not to manufacture irregularity.
-7. Preserve clear idiosyncrasies. Do not normalize the prose into generic corporate, academic, or chatty English.
+7. Prefer ordinary sentence structure to decorative symbol scaffolding. In prose you create, do not introduce hyphens or dashes, backticks around ordinary words, or repeated `label: explanation` frames merely to create emphasis, rhythm, or readability. When the source uses them mechanically, replace them only when a period, comma, conjunction or transition supported by the source, or a paragraph break preserves the same relationship. Do not trade a dash or label colon for a semicolon, parentheses, fragment, heading, or transition phrase that serves the same decorative role. Removing a label or dash never permits dropping a modal verb, turning a recommendation into an imperative, weakening explicit negation, or changing emphasis. Limit symbol edits to the mechanical instance; leave adjacent natural punctuation and phrasing alone. Preserve natural author usage and functional marks in compound words, ranges, Markdown, code, identifiers, commands, URLs, times, ratios, citations, interface labels, and house style. If an existing mark reads naturally, do not remove or restyle it merely to reduce the symbol count.
+8. Preserve clear idiosyncrasies. Do not normalize the prose into generic corporate, academic, or chatty English.
 
 Prefer subtraction and local repair over wholesale paraphrase. Do not swap synonyms merely to make the text look different. Keep technical prose technically exact.
 
@@ -90,6 +91,7 @@ Compare the source and revision, then restore or revise any edit that fails thes
 7. No literal statement has acquired a new image, implication, or punchline.
 8. Paragraph and sentence changes follow the thought rather than a formula.
 9. The edit solves an observed problem; it is not change for its own sake.
+10. No hyphen, dash, backtick, colon, semicolon, parenthesis, or other symbol was introduced solely as decoration, and no natural existing mark was changed merely to reduce a character count; every changed mark solves an observed problem.
 
 For a large revision, audit paragraph by paragraph. If the fidelity gate reports a protected-literal or structure failure, roll back the relevant edit and retry once. If fidelity and fluency conflict, preserve fidelity and flag the awkward or ambiguous passage.
 

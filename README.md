@@ -6,6 +6,8 @@ The goal is not to make prose perform “humanness.” It is to help the origina
 
 Alongside structural and voice editing, the skill asks the host agent to inspect common sentence-level issues such as article choice, countability and agreement, idiomatic prepositions and collocations, pronoun reference, modifier placement, contractions, punctuation, and dialect consistency. These are contextual editing instructions, not an exhaustive grammar engine or a guarantee that every error will be detected.
 
+For readability, it favors clear sentences, natural transitions, and genuine paragraph breaks over decorative dashes, backticks around ordinary words, or repeated label colons. Functional syntax and the writer's natural punctuation remain intact.
+
 ## What it protects
 
 - Facts, commitments, qualifications, uncertainty, attribution, and logical relationships
@@ -114,9 +116,9 @@ The canonical installable skill stays lean. Evaluation fixtures and forward-test
 
 ## Evaluation
 
-The evaluation suite covers short workplace prose, medium technical explanations, long-form publication excerpts, quoted instruction-like data, focused sentence-level copyediting, mixed-dialect repair, and an already natural no-op case. All fixture contents—including every name, endpoint, vendor, date, metric, incident, and anecdote—are synthetic. They were written for this repository and are not copied, adapted, or derived from any employer, customer, internal system, production incident, or production data.
+The evaluation suite covers short workplace prose, medium technical explanations, long-form publication excerpts, quoted instruction-like data, focused sentence-level copyediting, mixed-dialect repair, symbol-light prose, functional punctuation, and already natural no-op cases. All fixture contents—including every name, endpoint, vendor, date, metric, incident, and anecdote—are synthetic. They were written for this repository and are not copied, adapted, or derived from any employer, customer, internal system, production incident, or production data.
 
-See the [evaluation protocol](evals/README.md), the [v0.1.2 copyediting evaluation notes](evals/results-v0.1.2.md), and the historical [v0.1.1 notes](evals/results-v0.1.1.md). Recorded grader scores are exploratory observations from fresh agents, not independent benchmark results; the notes identify the preserved artifacts and reproducibility limits.
+See the [evaluation protocol](evals/README.md), the [v0.1.4 symbol-light prose notes](evals/results-v0.1.4.md), the [v0.1.2 copyediting notes](evals/results-v0.1.2.md), and the historical [v0.1.1 notes](evals/results-v0.1.1.md). Recorded grader scores are exploratory observations from fresh agents, not independent benchmark results; the notes identify the preserved artifacts and reproducibility limits.
 
 `im-not-ai-en/scripts/verify_fidelity.py` adds deterministic checks for supported literals, declared protected spans, common Markdown structure, and copy-ready wrappers. Its output redacts protected values by default; use `--show-values` only when reviewing trusted, non-sensitive text. The verifier is tested on Python 3.11 and 3.12. The machine-readable [`evals/manifest.json`](evals/manifest.json) binds fixtures to their outputs and contracts. Change rate is reported, but no universal pass threshold is imposed.
 

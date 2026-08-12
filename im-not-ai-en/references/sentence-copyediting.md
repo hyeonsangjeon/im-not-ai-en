@@ -60,6 +60,7 @@ Treat a clean sentence as a valid result. Do not replace it merely to demonstrat
 - Let register and the writer's existing habits determine whether contractions belong. Do not introduce or expand them only to make prose seem more or less conversational.
 - Repair genuine sentence fragments, run-ons, and comma splices; preserve fragments that clearly function as deliberate emphasis or conversational rhythm.
 - Follow the source or stated house style for serial commas, quotation marks, dashes, and similar choices. Do not treat a preferred style as universal grammar or globally convert straight and curly quotation marks or apostrophes.
+- In ordinary prose you create, do not add dashes, backticks around non-code words, or repeated label colons merely to simulate readability. Prefer clear clauses, sentence boundaries, supported transitions, and paragraph breaks while preserving functional syntax and the writer's natural punctuation.
 - Preserve the dominant US, UK, or other established variety. Several consistent spelling, vocabulary, or agreement cues can establish that variety; repair isolated conflicting forms when the evidence is clear. Do not infer a document-wide conversion from a single cue.
 
 ## Protect technical and quoted material

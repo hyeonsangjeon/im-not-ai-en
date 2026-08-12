@@ -453,7 +453,7 @@ def main() -> int:
         default="direct",
     )
     parser.add_argument("--marketplace-name", default="im-not-ai-en")
-    parser.add_argument("--expected-version", default="0.1.3")
+    parser.add_argument("--expected-version", default="0.1.4")
     parser.add_argument("--expected-copilot-version")
     parser.add_argument("--timeout", type=float, default=45.0)
     parser.add_argument("--require-direct-deprecation-warning", action="store_true")

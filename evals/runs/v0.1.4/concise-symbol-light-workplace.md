@@ -1,0 +1,1 @@
+We should keep the rollout at 10%, not because the current build is broken, but because we need one more follow-up check. At 10:30, run `deploy --dry-run`, compare the 3:1 canary split, and post the result in `#release-ops`. The goal is clarity, not a polished announcement. One thing matters: don’t guess.

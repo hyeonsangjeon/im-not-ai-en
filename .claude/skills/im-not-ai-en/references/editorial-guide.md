@@ -24,6 +24,18 @@ Repair by opening on the concrete claim, request, event, or observation. Keep na
 
 Keep the strongest useful instance. Rewrite the rest according to their real logical relationship. Preserve deliberate rhetoric that belongs to the writer or genre.
 
+### Decorative symbol scaffolding
+
+- Repeated `label: explanation` frames make ordinary prose read like slide notes or generated summaries.
+- Backticks around non-code words manufacture emphasis instead of earning it through wording or placement.
+- Hyphens, en dashes, or em dashes become mechanical when they repeatedly bridge thoughts that would read more naturally as sentences or clauses.
+
+Prefer a clear subject and verb, an ordinary sentence boundary, a conjunction or transition supported by the source, or a paragraph break at a genuine thought boundary. Do not replace a dash with `because`, `therefore`, or another logical connector unless the source actually supports that relationship.
+
+Do not simply trade one device for another. Parentheses, semicolons, headings, fragments, and transition phrases are not automatic substitutes. Use them only when they fit the source, grammar, and register.
+
+This is not a character ban. Preserve the writer's natural punctuation and functional syntax, including lexical hyphens, ranges, Markdown, code spans, identifiers, command flags, URLs, times, ratios, citations, interface labels, and stated house style.
+
 ### Vague importance and hidden agency
 
 - Generic praise such as “robust,” “seamless,” or “transformative” stands in for an observable property.

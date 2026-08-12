@@ -185,6 +185,49 @@
         "copy_ready": true,
         "identity": true
       }
+    },
+    {
+      "id": "concise-symbol-light-workplace",
+      "source": "evals/fixtures/concise-symbol-light-workplace.md",
+      "output": "evals/runs/v0.1.4/concise-symbol-light-workplace.md",
+      "protected_spans": [
+        "We should keep the rollout at 10%",
+        "not because the current build is broken",
+        "one more follow-up check",
+        "10:30",
+        "`deploy --dry-run`",
+        "3:1 canary split",
+        "`#release-ops`",
+        "The goal is clarity, not a polished announcement.",
+        "One thing matters: don’t guess."
+      ],
+      "output_contract": {
+        "copy_ready": true,
+        "must_repair_spans": [
+          "Plan:",
+          "10% — not",
+          "Next step:"
+        ]
+      }
+    },
+    {
+      "id": "concise-functional-punctuation",
+      "source": "evals/fixtures/concise-functional-punctuation.md",
+      "output": "evals/runs/v0.1.4/concise-functional-punctuation.md",
+      "protected_spans": [
+        "10:30",
+        "`deploy --dry-run`",
+        "https://example.test/a:b",
+        "3:1 ratio",
+        "One thing matters: don't guess.",
+        "`Retry-After`",
+        "`npm test`",
+        "`X-Trace-ID`"
+      ],
+      "output_contract": {
+        "copy_ready": true,
+        "identity": true
+      }
     }
   ]
 }
