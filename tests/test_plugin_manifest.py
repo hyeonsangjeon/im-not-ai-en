@@ -100,6 +100,7 @@ class PluginManifestTests(unittest.TestCase):
         frontmatter = match.group(1)
         self.assertRegex(frontmatter, r"(?m)^name: im-not-ai-en$")
         self.assertRegex(frontmatter, r"(?m)^license: MIT$")
+        self.assertRegex(frontmatter, r'(?m)^metadata:\n  version: "0\.1\.4"$')
 
     def test_skill_bundles_the_full_mit_license(self) -> None:
         bundled = (CANONICAL_SKILL_ROOT / "LICENSE").read_text(encoding="utf-8")
