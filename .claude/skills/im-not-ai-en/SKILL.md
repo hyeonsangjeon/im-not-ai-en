@@ -2,6 +2,8 @@
 name: im-not-ai-en
 description: Copyedit AI-assisted English for natural, idiomatic grammar, usage, flow, and rhythm without losing the writer's meaning, voice, or technical precision. Use for workplace messages, email snippets, issue and PR comments, technical explanations, documentation, posts, essays, and articles when the user asks to polish, naturalize, humanize, fix awkward or non-native English, de-mechanize, or remove formulaic AI-style prose. Preserve facts, commitments, uncertainty, citations, links, numbers, code, terminology, register, and recognizable voice. Do not use for translation, invented personality, authorship deception, or AI-detector evasion.
 license: MIT
+metadata:
+  version: "0.1.4"
 ---
 
 # I'm Not AI — English
